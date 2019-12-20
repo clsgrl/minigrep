@@ -3,8 +3,7 @@ use std::error::Error;
 
 pub struct Config {
     pub query : String,
-    pub filename : String,
-    pub case_sensitive : bool
+    pub filename : String
 }
 
 impl Config {
@@ -39,7 +38,7 @@ pub fn search<'a>(query : &str, contents : &'a str) -> Vec<&'a str> {
     let mut results = Vec::new();
 
     for line in contents.lines() {
-        if line.to_lowercase().contains(query) {
+        if line.to_lowercase().contains(&query) {
             results.push(line);
         }
     }
